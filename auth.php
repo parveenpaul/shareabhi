@@ -50,11 +50,12 @@
 			$homepageSql = $conn->query("SELECT * FROM homepage");
 
 			$heading_text = "";	$bottom_text1 = "";	$bottom_text2 = "";	$header_image = "";	$top_image = ""; $bottom_image = "";
-			$rotating_image = "";			
+			$rotating_image = ""; $page_title = "";		
 			$headerImgReq = ""; $topImgReq = ""; $bottomImgReq = ""; $rotatingImgReq = "";
 			$ROOT = "assests/images";
 			if( $homepageSql->num_rows > 0 ){
 				$homepageRow = $homepageSql->fetch_assoc();
+				$page_title = $homepageRow['page_title'];
 				$heading_text = $homepageRow['heading_text'];
 				$bottom_text1 = $homepageRow['bottom_text1'];
 				$bottom_text2 = $homepageRow['bottom_text2'];
@@ -119,6 +120,10 @@
 				<?php } ?>
 
 		      <form name="homepage_form" method="post" action="validate.php" enctype="multipart/form-data">
+		      	<div class="form-group">
+			 		<label for="page_title">Page Title</label>
+			 		<input type="text" name="page_title" value="<?php echo $page_title; ?>" class="form-control" required />
+			 	</div>
 			 	<div class="form-group">
 			 		<label for="header_img">Header Image</label>
 			 		<input type="file" name="header_img" value="" class="form-control-file" onchange="readURL(this, 'HeaderImg');" <?php echo $headerImgReq ?> />

@@ -18,6 +18,7 @@ if( !empty($_POST) ){
 	$postedValues = array(
 			'header_image'	=>	$_FILES['header_img']['name'],
 			'heading_text'	=>	$_POST['heading_text'],
+			'page_title'	=>	$_POST['page_title'],
 			'top_image'	=>	$_FILES['top_image']['name'],
 			'bottom_image'	=>	$_FILES['bottom_image']['name'],
 			'bottom_text1'	=>	$_POST['bottom_text1'],
